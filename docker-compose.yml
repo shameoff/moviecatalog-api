@@ -1,0 +1,49 @@
+version: '3'
+
+
+services:
+  db:
+    container_name: database_container
+    image: mysql:latest
+    hostname: $DB_HOST
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - $DB_PORT:3306
+    networks:
+      - network
+
+
+  adminer:
+    container_name: adminer_container
+    image: adminer
+    restart: always
+    ports:
+      - $ADMINER_PORT:8080
+    networks:
+      - network
+    environment:
+      - ADMINER_DEFAULT_SERVER=$DB_HOST
+
+#    networks:
+#      - app
+
+
+
+#  apache:
+#    image:
+
+
+#  app:
+#    build:
+#      dockerfile: ./Dockerfile
+#      context: ./
+
+
+networks:
+  network:
+volumes:
+  mysql_data:
