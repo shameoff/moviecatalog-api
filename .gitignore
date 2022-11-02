@@ -1,1 +1,4 @@
 .idea/
+.env
+vendor/
+database/mysql_data/
