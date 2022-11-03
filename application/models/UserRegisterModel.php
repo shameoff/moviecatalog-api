@@ -14,8 +14,4 @@ class UserRegisterModel
 
     }
 
-    public function createUser()
-    {
-
-    }
 }

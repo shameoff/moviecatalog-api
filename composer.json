@@ -1,6 +1,6 @@
 {
     "require": {
-      "vlucas/phpdotenv": "^5.5",
-      "ext-mysqli": "*"
+      "ext-mysqli": "*",
+        "symfony/dotenv": "^6.1"
     }
 }

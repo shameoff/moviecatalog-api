@@ -12,7 +12,8 @@ class AccountController extends core\Controller
 
     function register()
     {
-        echo
+        $this->request->input();
+
         $userRegisterModel = new UserRegisterModel();
     }
 
