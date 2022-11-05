@@ -9,8 +9,8 @@ require_once 'application/autoloadClasses.php';
 $request = new core\Http\Request();
 $response = new core\Http\Response();
 
-//$router = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-$router = new Router("/api/account/login", "POST");
+$router = new Router($request->getURI(), $request->getMethod());
+//$router = new Router("/api/account/profile", "GET");
 
 require 'application/routes/api-routes.php';
 

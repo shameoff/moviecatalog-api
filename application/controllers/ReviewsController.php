@@ -3,21 +3,18 @@
 class ReviewsController extends core\Controller {
     function index()
     {
-        $this->view = 'INDEX PAGE';
-        echo $this->view;
+        echo "Available Methods:";
     }
 
     function add($id){
-        $this->view = 'ADD REVIEW';
-        echo $this->view;
+        echo 'ADD REVIEW';
     }
     function edit($id){
-        $this->view = 'EDIT REVIEW';
-        echo $this->view;
+        echo 'EDIT REVIEW';
     }
     function delete($id){
-        $this->view = "DELETE REVIEW $id";
-        echo $this->view;
+
+        echo "DELETE REVIEW $id";
     }
 
 }

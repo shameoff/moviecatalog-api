@@ -10,10 +10,16 @@ services:
       - ./database/mysql_data:/var/lib/mysql
       - ./database/init_scripts:/docker-entrypoint-initdb.d
     restart: unless-stopped
-    env_file:
-      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - $DB_PORT:3306
+      - 127.0.0.1:${DB_PORT}:3306
+    expose:
+      - "${DB_PORT}"
     networks:
       - network
 
@@ -23,7 +29,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - $ADMINER_PORT:8080
+      - ${ADMINER_PORT}:8080
     networks:
       - network
     environment:

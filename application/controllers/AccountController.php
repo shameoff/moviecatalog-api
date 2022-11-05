@@ -1,43 +1,66 @@
 <?php
 
-class AccountController extends core\Controller
+namespace controllers;
+
+use core\Controller;
+use models\LoginModel;
+use models\UserRegisterModel;
+
+class AccountController extends Controller
 {
-    public $view;
+    private $service;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->service = new \services\AccountService();
+    }
 
     function index()
     {
-        $this->view = "Available Methods:";
-        echo $this->view;
+        echo "Available Methods:";
     }
 
     function register()
     {
-        $this->request->input();
+        $req_data = $this->request->input();
 
-        $userRegisterModel = new UserRegisterModel();
+        $userRegisterModel = new UserRegisterModel(
+            $req_data["email"],
+            $req_data["name"],
+            $req_data["password"],
+            $req_data["userName"],
+            $req_data["birthDate"],
+            $req_data["gender"]
+        );
+        $this->service->register($userRegisterModel);
     }
 
     function login()
     {
-        $this->view = "Login action of Account Controller";
-        echo $this->view;
+        $req_data = $this->request->input();
+
+        $loginModel = new LoginModel($req_data["username"], $req_data["password"]);
+        $this->service->login($loginModel);
+
+        echo "Login action of Account Controller";
     }
 
     function logout()
     {
-        $this->view = "Logout action of Account Controller";
-        echo $this->view;
+        $this->service->logout();
+        echo "Logout action of Account Controller";
     }
 
     function getUserInfo()
     {
         $this->view = "getUserInfo action of Account Controller";
-        echo $this->view;
+        echo "getUserInfo action of Account Controller";
     }
 
     function editUserInfo()
     {
         $this->view = "editUserInfo action of Account Controller";
-        echo $this->view;
+        echo "editUserInfo action of Account Controller";
     }
 }

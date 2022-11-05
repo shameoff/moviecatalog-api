@@ -1,5 +1,10 @@
 <?php
-class MovieModel extends Model{
+
+namespace models;
+
+use core\Model;
+
+class MovieModel extends Model {
     public function get_data()
     {
         return array(

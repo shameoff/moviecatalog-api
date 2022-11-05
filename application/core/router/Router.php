@@ -139,9 +139,9 @@ class Router {
             require_once($file);
 
             // controller class
-            $controller = ucfirst($parts[0]) . "Controller";
+            $controller = "\\controllers\\" . ucfirst($parts[0]) . "Controller";
 
-            if (class_exists($controller))
+            if (class_exists( $controller))
                 $controller = new $controller();
             else
                 $this->sendNotFound();
