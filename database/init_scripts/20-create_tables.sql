@@ -19,7 +19,7 @@ CREATE TABLE `PasswordToken` (
 CREATE TABLE `Movie` (
     id INT AUTO_INCREMENT primary key,
     `name` varchar(150),
-    poster varchar(100),
+    poster varchar(255),
     reviewAmount INT
 );
 
