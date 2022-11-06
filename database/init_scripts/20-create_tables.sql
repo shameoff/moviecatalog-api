@@ -5,7 +5,8 @@ CREATE TABLE `User` (
     email varchar(100),
     birthDate date,
     gender ENUM('0', '1'),
-    passwordToken varchar(255)
+    passwordHash varchar(255),
+    avatarLink varchar(255)
 );
 
 CREATE TABLE `PasswordToken` (

@@ -2,6 +2,9 @@
 
 namespace core\router;
 
+use Error;
+use Exception;
+
 class Router {
 
     private array $router = []; // list of routes
@@ -11,6 +14,8 @@ class Router {
     private string $url;
 
     private string $http_method;
+
+    private array $params = [];
 
     public function __construct(string $url, string $method) {
         $this->url = $url;
@@ -110,19 +115,15 @@ class Router {
     public function run(): void
     {
         if (empty($this->router))
-            throw \Exception('NON-Object Route Set');
+            throw new Exception('NON-Object Route Set');
 
         $this->findRoute();
 
         if (empty($this->matchRouter)) {
             $this->sendNotFound();
         } elseif (count($this->matchRouter) > 1){
-            throw \Error("Too many found routes, fix the config!");
+            throw new Error("Too many found routes, fix the config!");
         } else {
-            // call to callback method
-            if (is_callable($this->matchRouter[0]->getCallback()))
-                call_user_func($this->matchRouter[0]->getCallback(), $this->params);
-            else
                 $this->runController($this->matchRouter[0]->getCallback(), $this->params);
         }
     }

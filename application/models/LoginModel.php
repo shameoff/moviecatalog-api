@@ -2,17 +2,16 @@
 
 namespace models;
 
-use core\Model;
 
-class LoginModel extends Model
+class LoginModel
 {
     private $username;
     private $password;
 
     public function __construct($username, $password)
     {
-        $this->$username = $username;
-        $this->$password = $password;
+        $this->username = $username;
+        $this->password = $password;
     }
     public function getPassword(){
         return $this->password;

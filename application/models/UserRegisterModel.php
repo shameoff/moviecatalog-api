@@ -4,14 +4,14 @@ namespace models;
 
 class UserRegisterModel
 {
-    private $userName; //String
-    private $name; //String
-    private $password; //String
-    private $email; //String
+    private string $userName; //String
+    private string $name; //String
+    private string $password; //String
+    private string $email; //String
     private $birthDate; //Date
-    private $gender; //int
+    private int $gender; //int
 
-    public function __constuct($userName, $name, $password, $email, $birthDate, $gender)
+    public function __construct($userName, $name, $password, $email, $birthDate, $gender)
     {
         $this->userName = $userName;
         $this->name = $name;

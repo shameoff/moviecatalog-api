@@ -5,7 +5,6 @@ services:
   db:
     container_name: database_moviecatalog
     image: mysql:latest
-    hostname: $DB_HOST
     volumes:
       - ./database/mysql_data:/var/lib/mysql
       - ./database/init_scripts:/docker-entrypoint-initdb.d

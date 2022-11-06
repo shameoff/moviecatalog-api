@@ -2,9 +2,7 @@
 
 namespace models;
 
-use core\Model;
-
-class ProfileModel extends Model
+class ProfileModel
 {
     private $id;
     private $nickName;
